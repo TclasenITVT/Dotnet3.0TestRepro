@@ -17,4 +17,9 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: 'Dotnet3.0TestRepro.csproj'
+    projects: 'Dotnet3.0TestRepro/Dotnet3.0TestRepro.csproj'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: 'Dotnet3.0TestRepro.FSharp/Dotnet3.0TestRepro.FSharp.fsproj'
