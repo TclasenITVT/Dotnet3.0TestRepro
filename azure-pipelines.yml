@@ -16,10 +16,26 @@ steps:
     version: '3.0.100'
 - task: DotNetCoreCLI@2
   inputs:
+    command: 'restore'
+    arguments: '-c Release'
+    projects: |
+      Dotnet3.0TestRepro/Dotnet3.0TestRepro.csproj
+      Dotnet3.0TestRepro.FSharp/Dotnet3.0TestRepro.FSharp.fsproj
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    arguments: '-c Release --no-restore'
+    projects: |
+      Dotnet3.0TestRepro/Dotnet3.0TestRepro.csproj
+      Dotnet3.0TestRepro.FSharp/Dotnet3.0TestRepro.FSharp.fsproj
+- task: DotNetCoreCLI@2
+  inputs:
     command: 'test'
+    arguments: '-c Release --no-restore --no-build'
     projects: 'Dotnet3.0TestRepro/Dotnet3.0TestRepro.csproj'
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
+    arguments: '-c Release --no-restore --no-build'
     projects: 'Dotnet3.0TestRepro.FSharp/Dotnet3.0TestRepro.FSharp.fsproj'
