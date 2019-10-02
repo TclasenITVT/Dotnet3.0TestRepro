@@ -14,6 +14,10 @@ steps:
   inputs:
     packageType: 'sdk'
     version: '2.2.402'
+- task: VisualStudioTestPlatformInstaller@1
+  inputs:
+    packageFeedSelector: 'nugetOrg'
+    versionSelector: 'latestStable'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
